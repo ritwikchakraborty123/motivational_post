@@ -9,9 +9,10 @@ import random
 url = "https://type.fit/api/quotes"
 obj=rq.get(url);
 jq=obj.json()
-print(jq)
+
 cnt=0;
-while True:
+# for total ouput do while True  
+while (cnt<30):
 	try:
 
 		name="a"+str(random.randrange(1, 6))+".jpg"
@@ -21,14 +22,6 @@ while True:
 		draw=ImageDraw.Draw(image)
 		# C:\Windows\Fonts set there .ttf file
 		font = ImageFont.truetype("Poppins-Black.ttf",30)
-
-
-		# origin=datetime.date(2020,12,23)
-		# today=datetime.date.today()
-
-
-		# quote=jq[(origin-today).days]["text"]
-
 		quote=jq[cnt]["text"]
 		cnt+=1
 		today=""
@@ -56,11 +49,10 @@ while True:
 		# print(today)
 		for i in lii:
 			z,h = draw.textsize(i)
-			draw.text((image.width-image.width/2-z/2-150,y),i,"white",font)
+			draw.text((230,y),i,"white",font)
 			y+=50
-		# image.save("output/a"+str(cnt)+".jpg")
+		image.save("output/a"+str(cnt)+".jpg")
 	except:
 		print(cnt + " motivational post created ... ")
 		break
-# image.show()
 
